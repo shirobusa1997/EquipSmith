@@ -11,4 +11,7 @@ local_settings.py
 db.sqlite3
 media
 
+# FOR MACOS IGNORE SETTINGS
+.DS_Store
+
 # If your build process includes running collectstatic, then ...
