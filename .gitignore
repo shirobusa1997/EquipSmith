@@ -11,6 +11,10 @@ local_settings.py
 db.sqlite3
 media
 
+# Ignore local virtual environment
+devenv
+devenv_win
+
 # FOR MACOS IGNORE SETTINGS
 .DS_Store
 
