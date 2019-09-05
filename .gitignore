@@ -12,7 +12,7 @@ db.sqlite3
 media
 
 # Ignore local virtual environment
-devenv
+venv_osx
 devenv_win
 
 # FOR MACOS IGNORE SETTINGS
