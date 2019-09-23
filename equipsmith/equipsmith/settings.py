@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'equipsmith_dev.apps.EquipsmithDevConfig',
+    'mainapp.apps.MainappConfig',
     'bootstrap4',                               # PipPackage : django-bootstrap4
 ]
 

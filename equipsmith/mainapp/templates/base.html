@@ -1,0 +1,20 @@
+{% local static %}
+
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE|default:"en-us" }}">
+<head>
+	<meta charset="UTF-8">
+	<title>{% block title %}{% endblock %}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="{% static 'mainapp/css/bootstrap.min.css' %}" rel="stylesheet">
+	<link href="{% static 'mainapp/css.bootstrap-grid.min.css' %}" rel="stylesheet">
+	<!-- <link href="{% static '' %}" rel="stylesheet"> -->
+	<script src="{% static '' %}"></script>
+	<script src="{% static '' %}"></script>
+	{% block extrahead %}{% endblock %}
+</head>
+<body>
+	
+	<!-- header -->
+
+</body>

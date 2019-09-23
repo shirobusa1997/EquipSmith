@@ -1,6 +1,6 @@
 from django.urls import path
 
-from . import views
+from equipsmith_dev import views
 
 
 app_name = 'equipsmith_dev'
