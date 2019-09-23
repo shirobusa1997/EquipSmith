@@ -31,6 +31,17 @@
   </nav>
 
   <div class="container">
+  	<header>
+  		<nav>
+  			<ul>
+  				{% if user.is_authenticated %}
+  				<li><a href="{% url 'logout' %}" class="logout">Logout</a></li>
+  				{% else %}
+  				<li><a href="{% url 'accounts:signup' %}" class="signup">Signup</a></li>
+  				<li><a href="{% url 'login' %}" class="login">Login</a></li>
+  				{% endif %}
+  			</ul>
+  		</nav>
     {% block content %}
       {{ content }}
     {% endblock %}

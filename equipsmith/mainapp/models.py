@@ -33,7 +33,7 @@ class Equipments(models.Model):
 			return cls[member].value[0]
 
 	id = models.CharField('備品ID', max_length = 16, primary_key = True)
-	name = models.CharField('備品名', max_length = 255)
+	name = models.CharField('備品名', blank=False, max_length = 255)
 	equip_attribute = models.CharField('種類', null=True, max_length = 4, choices = [x.value for x in EQUIP_ATTRIBUTE])
 	equip_status = models.CharField('ステータス', null=True, max_length = 4, choices = [x.value for x in EQUIP_STATUS])
 	registered_date = models.DateTimeField('登録年月日', auto_now = True)
