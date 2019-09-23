@@ -18,8 +18,8 @@ from django.urls import path, include
 from django.views.generic import RedirectView
 
 urlpatterns = [
-	path('equipsmith_dev/', include ('equipsmith_dev.urls')),
-	path('mainapp/', include ('mainapp.urls')),
+	# path('equipsmith_dev/', include ('equipsmith_dev.urls')),
+	# path('mainapp/', include ('mainapp.urls')),
     path('admin/', admin.site.urls),
-    path('', RedirectView.as_view(url='/mainapp/')),
+    path('', include('mainapp.urls')),
 ]

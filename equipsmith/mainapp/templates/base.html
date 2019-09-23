@@ -1,4 +1,4 @@
-{% local static %}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE|default:"en-us" }}">
@@ -7,14 +7,33 @@
 	<title>{% block title %}{% endblock %}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="{% static 'mainapp/css/bootstrap.min.css' %}" rel="stylesheet">
-	<link href="{% static 'mainapp/css.bootstrap-grid.min.css' %}" rel="stylesheet">
-	<!-- <link href="{% static '' %}" rel="stylesheet"> -->
-	<script src="{% static '' %}"></script>
-	<script src="{% static '' %}"></script>
+	<link href="{% static 'mainapp/css/bootstrap-grid.min.css' %}" rel="stylesheet">
+	<link href="{% static 'moomin.css' %}" rel="stylesheet">
+	<script src="{% static 'mainapp/js/jquery-3.4.1.min.js' %}"></script>
+	<script src="{% static 'mainapp/js/bootstrap.min.js' %}"></script>
 	{% block extrahead %}{% endblock %}
 </head>
 <body>
-	
 	<!-- header -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin-bottom: 1rem;">
+		<a class="navbar-brand" href="/">[dev] EQUIPSMITH</a>
+		<div class="collapse navbar-collapse" id="davbarNav">
+			<ul class="navbar-nav">
+				<!-- 同音異義語 -->
+				<li class="nav-item {% if app_label == 'moomin' %}active{% endif %}">
+					<a class="nav-link" href="/moomin/">Menu</a>
+				</li>	
+			</ul>
+		</div>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
 
+  <div class="container">
+    {% block content %}
+      {{ content }}
+    {% endblock %}
+  </div>
 </body>
+</html>
