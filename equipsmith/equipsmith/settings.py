@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'equipsmith_dev.apps.EquipsmithDevConfig',
     # 'mainapp.apps.MainappConfig',
     'mainapp',
+    'accounts.apps.AccountsConfig',
     'bootstrap4',                               # PipPackage : django-bootstrap4
 ]
 
