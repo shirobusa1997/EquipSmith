@@ -19,4 +19,8 @@ devenv_win
 # FOR MACOS IGNORE SETTINGS
 .DS_Store
 
+# FOR PYCHARM IGNORE SETTINGS
+.idea
+*/.idea
+
 # If your build process includes running collectstatic, then ...
