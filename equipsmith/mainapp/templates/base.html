@@ -19,33 +19,51 @@
 		<a class="navbar-brand" href="/">[dev] EQUIPSMITH</a>
 		<div class="collapse navbar-collapse" id="davbarNav">
 			<ul class="navbar-nav">
-				<!-- 同音異義語 -->
 				<li class="nav-item {% if app_label == 'moomin' %}active{% endif %}">
 					<a class="nav-link" href="/moomin/">Menu</a>
-				</li>	
+				</li>
+				{% if user.is_authenticated %}
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'logout' %}" class="logout">Logout</a>
+					</li>
+					{% else %}
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'accounts:signup' %}" class="signup">Signup</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'login' %}" class="login">Login</a>
+					</li>
+				{% endif %}
 			</ul>
 		</div>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-  </nav>
+	</nav>
 
-  <div class="container">
-  	<header>
-  		<nav>
-  			<ul>
-  				{% if user.is_authenticated %}
-  				<li><a href="{% url 'logout' %}" class="logout">Logout</a></li>
-  				{% else %}
-  				<li><a href="{% url 'accounts:signup' %}" class="signup">Signup</a></li>
-  				<li><a href="{% url 'login' %}" class="login">Login</a></li>
-  				{% endif %}
-  			</ul>
-  		</nav>
-  	</header>
-  	<div class="content">
-  		{% block content %}{% endblock %}
-  	</div>
-  </div>
+	<div class="container">
+		<!-- <header>
+			<nav>
+				<ul>
+					{% if user.is_authenticated %}
+					<li><a href="{% url 'logout' %}" class="logout">Logout</a></li>
+					{% else %}
+					<li><a href="{% url 'accounts:signup' %}" class="signup">Signup</a></li>
+					<li><a href="{% url 'login' %}" class="login">Login</a></li>
+					{% endif %}
+				</ul>
+			</nav>
+		</header> -->
+		<div class="content">
+			{% block content %}{% endblock %}
+		</div>
+	</div>
+
+	<!-- <footer class="footer">
+		<div class="container">
+			<p class="test-muted">Place sticky footer content here.</p>
+		</div>
+	</footer> -->
+
 </body>
 </html>
