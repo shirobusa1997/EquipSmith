@@ -11,6 +11,9 @@
 	<link href="{% static 'moomin.css' %}" rel="stylesheet">
 	<script src="{% static 'mainapp/js/jquery-3.4.1.min.js' %}"></script>
 	<script src="{% static 'mainapp/js/bootstrap.min.js' %}"></script>
+	<style>
+		footer {background-color: black;}
+	</style>
 	{% block extrahead %}{% endblock %}
 </head>
 <body>
@@ -54,9 +57,11 @@
 				</ul>
 			</nav>
 		</header> -->
-		<div class="content">
-			{% block content %}{% endblock %}
-		</div>
+		<main class="mb-5">
+			<div class="content">
+				{% block content %}{% endblock %}
+			</div>
+		</main>
 	</div>
 
 	<!-- <footer class="footer">
@@ -64,6 +69,9 @@
 			<p class="test-muted">Place sticky footer content here.</p>
 		</div>
 	</footer> -->
+	<footer class="fixed-bottom">
+		<font color="gray">Version DEV_0.1-20190928</font>
+	</footer>
 
 </body>
 </html>
