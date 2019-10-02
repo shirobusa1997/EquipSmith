@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # 'mainapp.apps.MainappConfig',
     'mainapp',
     'accounts.apps.AccountsConfig',
+    'account_token',
     'bootstrap4',                               # PipPackage : django-bootstrap4
 ]
 
