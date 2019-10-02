@@ -17,6 +17,7 @@ class Equipments(models.Model):
 		screen = ('scrn', 'スクリーン')
 		smartphone = ('smph', 'スマートフォン')
 		tabletdevice = ('tbdv', 'タブレット端末')
+		toolkit = ('tool', '工具類')
 
 		@classmethod
 		def getValue(cls, member):
@@ -37,3 +38,4 @@ class Equipments(models.Model):
 	equip_attribute = models.CharField('種類', null=True, max_length = 4, choices = [x.value for x in EQUIP_ATTRIBUTE])
 	equip_status = models.CharField('ステータス', null=True, max_length = 4, choices = [x.value for x in EQUIP_STATUS])
 	registered_date = models.DateTimeField('登録年月日', auto_now = True)
+	remarks = models.CharField('備考', max_length=255, blank=True)
