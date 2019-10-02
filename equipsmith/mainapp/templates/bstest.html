@@ -5,6 +5,11 @@
 {% block extrahead %}{% endblock %}
 
 {% block content %}
+{% if user.is_authenticated %}
+<div class="alert alert-success" role="alert">
+ Welcomeback! :  <strong> {{ user.get_username }} </strong>
+</div>
+{% endif %}
 
 <div class="basic">
   <div class="row">
