@@ -12,10 +12,15 @@ db.sqlite3
 media
 
 # Ignore local virtual environment
-devenv
+venv_osx
 devenv_win
+*/*/migrations
 
 # FOR MACOS IGNORE SETTINGS
 .DS_Store
+
+# FOR PYCHARM IGNORE SETTINGS
+.idea
+*/.idea
 
 # If your build process includes running collectstatic, then ...

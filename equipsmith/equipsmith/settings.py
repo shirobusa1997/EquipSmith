@@ -37,7 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'equipsmith_dev',
+    'equipsmith_dev.apps.EquipsmithDevConfig',
+    # 'mainapp.apps.MainappConfig',
+    'mainapp',
+    'accounts.apps.AccountsConfig',
+    'account_token',
+    'bootstrap4',                               # PipPackage : django-bootstrap4
 ]
 
 MIDDLEWARE = [
@@ -121,3 +126,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# Authorization Settings
+# ログイン・ログアウト後の処理
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
