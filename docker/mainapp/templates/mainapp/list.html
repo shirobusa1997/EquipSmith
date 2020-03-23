@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="conntent-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Equipments List</h1>
+            </div>
+            <!-- /.col -->
+            <!-- <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">Dashboard v1</li>
+            </ol>
+            </div>
+            <-- /.col -->
+        </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <section class="content">
+        <form method = "post" action = "">
+            <table class = "table table-hover">
+              <tr>
+                <th>備品ID</th>
+                <th>備品名</th>
+                <th>備品種別</th>
+                <th>状態</th>
+                <th>登録日</th>
+                <th>備考欄</th>
+              </tr>
+              {% for equipment in equipments_list %}
+                <tr>
+                  <td>{{equipment.id}}</td>
+                  <td>{{equipment.name}}</td>
+                  <td>{{equipment.equip_attribute}}</td>
+                  <td>{{equipment.equip_status}}</td>
+                  <td>{{equipment.registered_date}}</td>
+                  <td>{{equipment.remarks}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </form>
+    </section>
+
+</div>
+
+{% endblock content %}

@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Dashboard</h1>
+        </div>
+        <!-- /.col -->
+        <!-- <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Dashboard v1</li>
+          </ol>
+        </div>
+        <-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <div class="col-lg-3 col-xs-6">
+          <!-- SmallBox -->
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3>[USING_EQUIP_COUNT]</h3>
+              <p>利用中の備品</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-bag"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+          <!-- SmallBox -->
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3>利用申請</h3>
+              <p>新しく備品を借りる</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-bag"></i>
+            </div>
+            <a href="#" class="small-box-footer">Go <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+          <!-- SmallBox -->
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3>購入申請</h3>
+              <p>欲しい備品を申請する</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-bag"></i>
+            </div>
+            <a href="#" class="small-box-footer">Go  <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+          <!-- SmallBox -->
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3>報告</h3>
+              <p>備品について報告する</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-bag"></i>
+            </div>
+            <a href="#" class="small-box-footer">Go  <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- /.row -->
+
+      <section class="content">
+        <form method = "post" action = "">
+            <table class = "table table-hover">
+              <tr>
+                <th>備品ID</th>
+                <th>備品名</th>
+                <th>備品種別</th>
+                <th>状態</th>
+                <th>登録日</th>
+                <th>備考欄</th>
+              </tr>
+              {% for equipment in equipments_list %}
+                <tr>
+                  <td>{{equipment.id}}</td>
+                  <td>{{equipment.name}}</td>
+                  <td>{{equipment.equip_attribute}}</td>
+                  <td>{{equipment.equip_status}}</td>
+                  <td>{{equipment.registered_date}}</td>
+                  <td>{{equipment.remarks}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </form>
+    </section>
+
+      <!-- /.row (main row) -->
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+{% endblock content %}
