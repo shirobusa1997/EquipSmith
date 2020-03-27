@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'account_token',
     'bootstrap4',
+    'django_slack',
     'mainapp',
 ]
 
