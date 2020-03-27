@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 
 from enum import Enum
 
@@ -41,3 +42,8 @@ class Equipments(models.Model):
 	remarks = models.CharField('備考', max_length=255, blank=True)
 
 
+class Records(models.Model):
+	id = models.AutoField('処理ID', primary_key = True, editable=False)
+	equipid = models.ForeignKey(Equipments, on_delete = models.CASCADE)
+	userid = models.ForeignKey(get_user_model(), on_delete = models.CASCADE, default = 1)
+	recorded_date = models.DateTimeField('申請日時', auto_now = True)
