@@ -3,3 +3,4 @@ bootstrap4
 psycopg2
 pillow
 django-slack
+django-extra-views

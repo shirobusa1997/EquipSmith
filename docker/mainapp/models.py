@@ -43,7 +43,22 @@ class Equipments(models.Model):
 
 
 class Records(models.Model):
+	class RECORD_STATUS(Enum):
+		green = ('green', '貸出中')
+		blue = ('blue', '割当中')
+		yellow = ('yellow', '延長貸出中')
+		orange = ('orange', '返却期限間近')
+		red = ('red', '返却期限切れ・延滞中')
+		purple = ('purple', '返却済み・確認中')
+		black = ('black', '返却承認済み')
+
+		@classmethod
+		def getValue(cls, member):
+			return cls[member].value[0]
+
 	id = models.AutoField('処理ID', primary_key = True, editable=False)
 	equipid = models.ForeignKey(Equipments, on_delete = models.CASCADE)
 	userid = models.ForeignKey(get_user_model(), on_delete = models.CASCADE, default = 1)
+	status = models.CharField('ステータス', null = True, max_length = 6, choices = [x.value for x in RECORD_STATUS])
 	recorded_date = models.DateTimeField('申請日時', auto_now = True)
+	returned_date = models.DateTimeField('返却日時', null = True)
