@@ -61,4 +61,5 @@ class Records(models.Model):
 	userid = models.ForeignKey(get_user_model(), on_delete = models.CASCADE, default = 1)
 	status = models.CharField('ステータス', null = True, max_length = 6, choices = [x.value for x in RECORD_STATUS])
 	recorded_date = models.DateTimeField('申請日時', auto_now = True)
+	return_due = models.DateTimeField('貸出期限', null = True)
 	returned_date = models.DateTimeField('返却日時', null = True)

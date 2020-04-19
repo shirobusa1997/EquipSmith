@@ -7,7 +7,7 @@ class EquipmentsAdmin(admin.ModelAdmin):
 	list_display_links = ('id', 'name',)
 
 class RecordsAdmin(admin.ModelAdmin):
-	list_display = ('id', 'equipid', 'recorded_date',)
+	list_display = ('id', 'equipid', 'userid', 'status', 'recorded_date', 'return_due', 'returned_date',)
 	list_display_links = ('id',)
 
 admin.site.register(Equipments, EquipmentsAdmin)
