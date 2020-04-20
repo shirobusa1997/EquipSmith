@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse
+from django.db.models import Q
 from django.contrib.auth import get_user_model
 from mainapp.models import Equipments, Records
 
@@ -17,7 +18,7 @@ def bstest(request):
 
 def top(request):
 	equipments_list = Equipments.objects.all()
-	personal_record = Records.objects.filter(userid=request.user and status=Records.status.green)
+	personal_record = Records.objects.filter(Q(userid=request.user) & (Q(status='green') | Q(status='blue')))
 	params = {'message': 'メンバーの一覧', 'equipments_list': equipments_list, 'personal_record': personal_record,}
 	return render(request, 'mainapp/top.html', params)
 	
