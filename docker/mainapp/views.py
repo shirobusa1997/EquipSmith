@@ -17,12 +17,20 @@ def bstest(request):
 	return render(request, 'bstest.html')
 
 def top(request):
+	context = ['green', 'yellow', 'orange', 'red']
 	equipments_list = Equipments.objects.all()
 	personal_record = Records.objects.filter(Q(userid=request.user) & (Q(status='green') | Q(status='blue')))
-	params = {'message': 'メンバーの一覧', 'equipments_list': equipments_list, 'personal_record': personal_record,}
+	params = {
+				'message': 'メンバーの一覧',
+				'equipments_list': equipments_list,
+				'personal_record': personal_record,
+				'context': context,
+			 }
 	return render(request, 'mainapp/top.html', params)
 	
 def list(request):
 	equipments_list = Equipments.objects.all()
 	return render(request, 'mainapp/list.html')
-	
+
+def generateEquipID():
+	pass
