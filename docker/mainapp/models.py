@@ -1,7 +1,14 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-
 from enum import Enum
+import datetime
+
+def generateEquipID():
+		now = datetime.datetime.now()
+		nowstr = now.strftime('%Y%m%d')
+		equipcount = Equipments.objects.filter(registered_date__gte=datetime.date.today()).count()
+		return nowstr + str(equipcount).zfill(2)
+
 
 # Create your models here.
 class Equipments(models.Model):
@@ -45,7 +52,7 @@ class Equipments(models.Model):
 		def getValue(cls, member):
 			return cls[member].value[0]
 
-	id = models.CharField('備品ID', max_length = 16, primary_key = True)
+	id = models.CharField('備品ID', max_length = 16, primary_key = True, default=generateEquipID)
 	name = models.CharField('備品名', blank=False, max_length = 255)
 	equip_attribute = models.CharField('種類', null=True, max_length = 4, choices = [x.value for x in EQUIP_ATTRIBUTE])
 	equip_status = models.CharField('ステータス', null=True, max_length = 4, choices = [x.value for x in EQUIP_STATUS])

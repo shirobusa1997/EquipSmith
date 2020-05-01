@@ -31,6 +31,3 @@ def top(request):
 def list(request):
 	equipments_list = Equipments.objects.all()
 	return render(request, 'mainapp/list.html')
-
-def generateEquipID():
-	pass
