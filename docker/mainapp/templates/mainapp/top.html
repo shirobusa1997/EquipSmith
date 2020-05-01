@@ -60,7 +60,7 @@
               <h3>購入申請</h3>
               <p>欲しい備品を申請する</p>
             </div>
-            <a href="#" class="small-box-footer">NotAvailabe</a>
+            <a href="#" class="small-box-footer">NotAvailable</a>
           </div>
         </div>
         <div class="col-lg-3 col-xs-6">
@@ -70,7 +70,7 @@
               <h3>報告</h3>
               <p>備品について報告する</p>
             </div>
-            <a href="#" class="small-box-footer">NotAvailabe</a>
+            <a href="#" class="small-box-footer">NotAvailable</a>
           </div>
         </div>
       </div>
@@ -100,9 +100,11 @@
                   <td>{{record.recorded_date}}</td>
                   <td>{{record.return_due}}</td>
                   <td>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal">
+                    {% if record.status in context %}
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal" data-equip={{record.equipid}}>
                       返却
                     </button>
+                    {% endif %}
                   </td>
                 </tr>
                 {% endfor %}
@@ -123,21 +125,20 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="Modal">備品詳細</h5>
+        <h5 class="modal-title" id="Modal">返却申告の確認</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        選択した備品 : 
-        この備品の貸し出しを申請しますか？
+        返却申告を行います．
+        この備品を所定の保管場所へ返却しましたか？
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
-        <button type="button" class="btn btn-primary">申請</button>
+        <button type="button" class="btn btn-primary">申告</button>
       </div>
     </div>
   </div>
 </div>
-
 {% endblock content %}
