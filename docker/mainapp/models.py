@@ -6,29 +6,40 @@ from enum import Enum
 # Create your models here.
 class Equipments(models.Model):
 	class EQUIP_ATTRIBUTE(Enum):
-		book = ('book', '書籍')
-		desktopcomputer = ('depc', 'デスクトップPC')
-		laptopcomputer = ('lapc', 'ノートPC')
-		workstation = ('wkst', 'ワークステーション')
-		display = ('dspl', 'PCディスプレイ')
-		pcsupply = ('pcsp', 'PC周辺機器')
-		vrdevice = ('vrdv', 'VRデバイス')
-		ardevice = ('ardv', 'ARデバイス')
-		projector = ('prjc', 'プロジェクター')
-		screen = ('scrn', 'スクリーン')
-		smartphone = ('smph', 'スマートフォン')
-		tabletdevice = ('tbdv', 'タブレット端末')
-		toolkit = ('tool', '工具類')
+		book 			= ('00', '書籍')
+		desktopcomputer = ('01', 'デスクトップPC')
+		laptopcomputer 	= ('02', 'ノートPC')
+		workstation 	= ('03', 'ワークステーション')
+		display 		= ('04', 'PCディスプレイ')
+		pcsupply 		= ('05', 'PC周辺機器')
+		vrdevice 		= ('06', 'VRデバイス')
+		ardevice 		= ('07', 'ARデバイス')
+		projector 		= ('08', 'プロジェクター')
+		screen 			= ('09', 'スクリーン')
+		smartphone 		= ('10', 'スマートフォン')
+		tabletdevice 	= ('11', 'タブレット端末')
+		toolkit 		= ('12', '工具類')
 
 		@classmethod
 		def getValue(cls, member):
 			return cls[member].value[0]
 
 	class EQUIP_STATUS(Enum):
-		available = ('avlb', '利用可能')
-		lending = ('lend', '貸出中')
-		assigning = ('asgn', '割当中')
-		lost = ('lost', '紛失')
+		available 	= ('avlb', '利用可能')
+		lending 	= ('lend', '貸出中')
+		assigning 	= ('asgn', '割当中')
+		maintenance = ('mtnc', 'メンテナンス中')
+		lost 		= ('lost', '紛失')
+
+		@classmethod
+		def getValue(cls, member):
+			return cls[member].value[0]
+
+	class EQUIP_STORAGEPLACE(Enum):
+		privatespace = ('10fprv', '10階プライベートスペース')
+		openlabo 	 = ('09fopn', '9階オープンラボ')
+		openspace 	 = ('08fopn', '8階オープンスペース')
+		komeroom	 = ('komerm', '米谷先生個室')
 
 		@classmethod
 		def getValue(cls, member):
@@ -38,6 +49,8 @@ class Equipments(models.Model):
 	name = models.CharField('備品名', blank=False, max_length = 255)
 	equip_attribute = models.CharField('種類', null=True, max_length = 4, choices = [x.value for x in EQUIP_ATTRIBUTE])
 	equip_status = models.CharField('ステータス', null=True, max_length = 4, choices = [x.value for x in EQUIP_STATUS])
+	equip_storagespace = models.CharField('保管場所', null = False, max_length = 6, choices = [x.value for x in EQUIP_STORAGEPLACE], default=1)
+	author = models.ForeignKey(get_user_model(), on_delete = models.CASCADE, default = 1)
 	registered_date = models.DateTimeField('登録年月日', auto_now = True)
 	remarks = models.CharField('備考', max_length=255, blank=True)
 
