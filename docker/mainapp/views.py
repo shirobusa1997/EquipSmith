@@ -30,4 +30,8 @@ def top(request):
 	
 def list(request):
 	equipments_list = Equipments.objects.all()
-	return render(request, 'mainapp/list.html')
+	params = {
+				'message': '利用可能な備品一覧',
+				'available_equipments': 'equipments_list',
+			 }
+	return render(request, 'mainapp/list.html', params)
