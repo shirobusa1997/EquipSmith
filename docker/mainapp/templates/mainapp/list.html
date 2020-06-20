@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="conntent-wrapper">
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
@@ -22,28 +22,35 @@
     <!-- /.content-header -->
 
     <section class="content">
+      {% if available_equipments|length <= 0 %}
+      利用可能な備品はありません．
+      {% else %}
         <form method = "post" action = "">
-            <table class = "table table-hover">
+          <table class = "table table-hover">
+            <tr>
+              <th>備品名</th>
+              <th>備品種別</th>
+              <th>状態</th>
+              <th>操作パネル</th>
+            </tr>
+            {% for record in available_equipments %}
               <tr>
-                <th>備品ID</th>
-                <th>備品名</th>
-                <th>備品種別</th>
-                <th>状態</th>
-                <th>登録日</th>
-                <th>備考欄</th>
+                <td>{{record.id}}</td>
+                <td>{{record.name}}</td>
+                <td>{{record.name}}</td>
+                <td>{{record.name}}</td>
+                <td>
+                  {% if record.status in context %}
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal" data-equip={{record.equipid}}>
+                    貸出申請
+                  </button>
+                  {% endif %}
+                </td>
               </tr>
-              {% for equipment in available_equipments %}
-                <tr>
-                  <td>{{equipment.id}}</td>
-                  <td>{{equipment.name}}</td>
-                  <td>{{equipment.equip_attribute}}</td>
-                  <td>{{equipment.equip_status}}</td>
-                  <td>{{equipment.registered_date}}</td>
-                  <td>{{equipment.remarks}}</td>
-                </tr>
-                {% endfor %}
-            </table>
+              {% endfor %}
+          </table>
         </form>
+      {% endif %}
     </section>
 
 </div>

@@ -5,7 +5,7 @@ import datetime
 
 def generateEquipID():
 		now = datetime.datetime.now()
-		nowstr = now.strftime('%Y%m%d')
+		nowstr = now.strftime('%Y%m%d')[2:]
 		equipcount = Equipments.objects.filter(registered_date__gte=datetime.date.today()).count()
 		return nowstr + str(equipcount).zfill(2)
 
