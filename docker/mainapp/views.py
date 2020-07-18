@@ -35,3 +35,11 @@ def list(request):
 				'available_equipments': 'equipments_list',
 			 }
 	return render(request, 'mainapp/list.html', params)
+
+def createRecord(request):
+	
+	return HttpResponseRedirect(reverse('list'))
+
+def returnResource(request):
+
+	return HttpResponseRedirect(reverse('top'))
